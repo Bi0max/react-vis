@@ -64,7 +64,9 @@ export default class DynamicTreemapExample extends React.Component {
       height: 300,
       mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
       getLabel: x => x.name,
-      width: 350
+      width: 350,
+      padding: 3,
+      sidePadding: {'top':20},
     };
     return (
       <div className="dynamic-treemap-example">

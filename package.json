@@ -1,9 +1,9 @@
 {
-  "name": "react-vis",
-  "version": "1.11.7",
+  "name": "react-vis-bi0max",
+  "version": "1.11.10",
   "license": "MIT",
   "author": "Visualization Team <visualization@uber.com>",
-  "description": "Data visualization library based on React and d3.",
+  "description": "Fork of Data visualization library based on React and d3.",
   "main": "dist",
   "module": "es",
   "jsnext:main": "es",
@@ -13,18 +13,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/uber-common/react-vis.git"
-  },
-  "bugs": {
-    "url": "https://github.com/uber-common/react-vis/issues/new",
-    "email": "visualization@uber.com"
+    "url": "https://github.com/Bi0max/react-vis.git"
   },
   "scripts": {
     "docs": "./publish-docs.sh",
     "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
-    "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
+    "build_old": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
+    "build1": "npm run clean",
+    "build2": "babel src -d dist --copy-files",
+    "build3": "babel src -d es --copy-files",
+    "build4": "node-sass src/main.scss dist/style.css --output-style compressed",
+
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test:windows": "babel-node --inspect ./tests/index.js",
@@ -32,7 +33,7 @@
     "full-test": "npm run lint && npm run cover",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
     "prettier": "prettier --write $(git ls-files | grep '.js$')",
-    "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
+    "remove-unpm-rfs": "remove-refs-to-unpm.pl"
   },
   "husky": {
     "hooks": {
